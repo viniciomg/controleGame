@@ -8,6 +8,10 @@ const botaoAndar= document.querySelector("#botaoAndar");
 const botaVoltar= document.querySelector("#botaVoltar");
 const botaoEnter= document.querySelector("#botaoEnter");
 
+var andar = false;
+var voltar = false;
+var pular = false;
+
 const firebaseConfig = {
   apiKey: "AIzaSyAx5eBV57UAbun8qnqg3Zs0LrYrQSL_T0Y",
   authDomain: "marioword-5d26f.firebaseapp.com",
@@ -41,7 +45,7 @@ const firebaseConfig = {
     botaoPular.addEventListener("touchstart", ()=>{
       updateBanco(true, false, false, false );
       console.log("update");
-      
+      pular = true;
     });
    
     botaoBaixar.addEventListener("mousedown", ()=>{
@@ -49,17 +53,24 @@ const firebaseConfig = {
       console.log("update");
     });     
     botaoAndar.addEventListener("mousedown", ()=>{
-      updateBanco(false, true, false, false );
+      if(pular)
+        updateBanco(pular, true, false, false );
+      else
+        updateBanco(false, true, false, false );
       console.log("update");
     });  
     botaVoltar.addEventListener("mousedown", ()=>{
       updateBanco(false, false, true, false );
       console.log("update");
-    });  
-
-    document.addEventListener("touchend", ()=>{
-      updateBanco(false, false, false, false );
     });
+   botaoPular.addEventListener("touchend", ()=>{
+      updateBanco(false, false, false, false );
+      pular  =false;
+    });
+    botaoAndar.addEventListener("touchend", ()=>{
+      updateBanco(false, false, false, false );
+      andar = false;
+    });  
 
 
     
