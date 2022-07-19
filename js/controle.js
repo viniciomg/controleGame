@@ -38,7 +38,7 @@ const firebaseConfig = {
     });
       }
 
-    botaoPular.addEventListener("mousedown", ()=>{
+    botaoPular.addEventListener("touchstart", ()=>{
       updateBanco(true, false, false, false );
       console.log("update");
       
@@ -57,7 +57,7 @@ const firebaseConfig = {
       console.log("update");
     });  
 
-    document.addEventListener("mouseup", ()=>{
+    document.addEventListener("touchend", ()=>{
       updateBanco(false, false, false, false );
     });
 
